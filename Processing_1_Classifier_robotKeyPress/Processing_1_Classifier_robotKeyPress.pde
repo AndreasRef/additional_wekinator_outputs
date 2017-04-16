@@ -4,11 +4,11 @@ Can be used to play games like:
 
 Wolfenstein:  http://3d.wolfenstein.com/game_EU.php 
 Controls: Left, Right, Up, X, Space
-Delay time: 
+Suggested delay time: 50?
 
 Tetris: http://www.freetetris.org/game.php
 Controls: Left, Right, X
-Delay time: 
+Delay time: 50?
 
 Google T-Rex Game: http://apps.thecodepost.org/trex/trex.html SPACE 
 Controls: Space
@@ -28,6 +28,8 @@ import java.awt.event.KeyEvent;
 Robot robot;
 
 boolean singleTrigger = true;
+
+int delayTime = 100;
 
 float lastInput = 1;
 
@@ -64,15 +66,11 @@ void oscEvent(OscMessage theOscMessage) {
       float f = theOscMessage.get(0).floatValue();
       println("received1: " + f);
       currentMessage = Float.toString(f);
-
-
-      int delayTime = 100;
-
     
-      if (lastInput !=f) {
+      if (lastInput !=f) { //Only trig if the classification is different from the last
 
         if (f == 1) { 
-          //DO NOTHING
+          //DO NOTHING (neutral class)
         }
 
         if (f == 2) {
